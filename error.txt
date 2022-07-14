@@ -1,0 +1,14 @@
+// This  is going to use for erro explantion 
+ERROR 01: ===>
+nodemon : File C:\Users\pc\AppData\Roaming\npm\nodemon.ps1 cannot be loaded because running scripts is disabled on this system. For more 
+information, see about_Execution_Policies at https:/go.microsoft.com/fwlink/?LinkID=135170.
+At line:1 char:1
++ ~~~~~~~
+    + CategoryInfo          : SecurityError: (:) [], PSSecurityException
+    + FullyQualifiedErrorId : UnauthorizedAccess
+
+Soution for this ERROR01 is 
+    Run the power shell as addministrator 
+    Run commman : Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
+    (I'd recommend using RemoteSigned as opposed to Unrestricted, and limiting 
+    the policy to the CurrentUser if possible)

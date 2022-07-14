@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('./partials/head.ejs') %>
+<body>
+    
+    <!-- Include the navigation bar EJS template -->
+    <%- include('./partials/nav.ejs') %>
+    
+
+    <div class="container">
+        <h4>Item Details</h4>
+        <div>
+
+          <h5>Item name: <%= item.name %></h3>
+          <h5>Item price: <%= item.price %></h3>
+          <a class="delete btn" id="deleteBtn" data-id="<%= item._id%>" href="">Delete</a>
+        </div>
+    </div>
+
+    
+
+    <script>
+      deleteBtn.onclick = function(e){
+        e.preventDefault();
+        const id = deleteBtn.dataset.id;
+        // another way to get id
+        // const id = e.target.getAttribute('data-id')
+        console.log(id)
+        const endpoint = `/items/${id}`;
+        fetch(endpoint, {
+          method: 'DELETE'
+        }).then(res=>res.json()).then(data=>{
+            console.log('data', data)
+            window.location.href = data.redirect
+          }
+        ).catch(err=>console.log(err))
+      }
+    </script>
+</body>
+</html>
